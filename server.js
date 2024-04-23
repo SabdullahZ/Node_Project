@@ -65,10 +65,12 @@ app.listen(3001, ()=>{
 const express = require('express');
 const app = express();
 const db = require('./db');
+require('dotenv').config();
 const bodyParser = require('body-parser');
  // Import the menu model
 
 app.use(bodyParser.json()); 
+const  PORT = process.env.PORT || 3001;
 
 app.get('/', function (req, res) {
   res.send('hello, no errors here: ')
@@ -147,6 +149,6 @@ app.use('/person', personRouter);
 const menuRouter = require('./routes/menuRoutes')
 app.use('/menu', menuRouter);
 
-app.listen(3001, ()=>{
+app.listen(PORT, ()=>{
     console.log("server is live...")
 })
